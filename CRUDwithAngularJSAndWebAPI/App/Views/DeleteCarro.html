@@ -1,0 +1,21 @@
+﻿<div id="delete" ng-controller="CarroDeleteController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="Close()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Deletar este carro</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Deseja Realmente deletar este carro <b>{{Modelo.Marcas.Nome + " " + Modelo.Nome + " " + Cor + " " + Ano}}</b>?</div>
+
+            </div>
+            <div class="modal-footer ">
+                <button type="submit" class="btn btn-success" ng-click="Delete()"><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
+                <button type="button" class="btn btn-default" ng-click="Close()"><span class="glyphicon glyphicon-remove"></span> Não</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,92 @@
+﻿<div  id="add" tabindex="-1" role="dialog" aria-labelledby="add-modal-label">
+   
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" id="add-form" ng-submit="Add()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="Close()"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="add-modal-label">Novo Carro</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="add-cor" class="col-sm-2 control-label">Cor</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="add-cor" name="Cor" placeholder="Cor" ng-model="Cor" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-Ano" class="col-sm-2 control-label">Ano</label>
+                        <div class="col-sm-10">
+                            <input type="number" min="1900" max="2099" step="1" class="form-control" id="add-Ano" name="Ano" placeholder="Ano" ng-model="Ano" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-KM" class="col-sm-2 control-label">KM</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="add-KM" name="KM" placeholder="KM" ng-model="KM">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-Valor" class="col-sm-2 control-label">Valor</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control dinheiro" id="add-Valor" name="Valor" placeholder="Valor" ng-model="Valor" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add-Combustivel" class="col-sm-2 control-label">Combustível</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="add-Combustivel" name="Combustivel" ng-model="combustivel_id" required>
+                                <option value="">Selecione o tipo de combustível</option>
+                                <option ng-repeat="c in combustiveis" ng-value="c.ID">{{ c.Tipo }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add-Cambio" class="col-sm-2 control-label">Câmbio</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="add-Cambio" name="Cambio" ng-model="cambio_id" required>
+                                <option value="">Selecione o tipo de Câmbio</option>
+                                <option ng-repeat="c in cambios" ng-value="c.ID">{{ c.Tipo }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add-Marca" class="col-sm-2 control-label">Marca</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="add-Marca" name="Marca" ng-model="marca_id" ng-change="changeMarca()" required>
+                                <option value="">Selecione a Marca</option>
+                                <option ng-repeat="m in marcas" ng-value="m.ID">{{ m.Nome }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add-Modelo" class="col-sm-2 control-label">Modelo</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="add-Modelo" name="Modelo" ng-model="modelo_id" required ng-disabled="!(marca_id > 0)">
+                                <option value="" ng-if="marca_id > 0">Selecione o Modelo</option>
+                                <option value="" ng-if="!(marca_id > 0)">Selecione primeiro a Marca</option>
+                                <option ng-repeat="m in modelos" ng-value="m.ID">{{ m.Nome }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add-Imagem" class="col-sm-2 control-label">Imagem</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" id="add-Imagem" name="Imagem" placeholder="Imagem" file-input="files" required accept="image/jpeg, image/jpg">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="Close()">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

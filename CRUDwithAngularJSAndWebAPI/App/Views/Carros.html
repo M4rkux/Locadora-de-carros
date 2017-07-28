@@ -1,0 +1,43 @@
+﻿<a href="#/NovoCarro" class="btn btn-primary btn-xs" >Novo Carro</a>
+<br /><br />
+<div class="table-responsive">
+    <div ng-show="carregando" style="text-align: center;">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+    </div>
+    <table id="mytable" class="table table-bordred table-striped" ng-hide="carregando">
+        <thead>
+        <th>ID</th>
+        <th>Cor</th>
+        <th>Ano</th>
+        <th>KM</th>
+        <th>Valor</th>
+        <th>Câmbio</th>
+        <th>Combustível</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Imagem</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in carros">
+                <td>{{item.ID}}</td>
+                <td>{{item.Cor}}</td>
+                <td>{{item.Ano}}</td>
+                <td>{{item.KM}}</td>
+                <td>{{item.Valor}}</td>
+                <td>{{item.Cambio.Tipo}}</td>
+                <td>{{item.Combustivel.Tipo}}</td>
+                <td>{{item.Modelo.Marcas.Nome}}</td>
+                <td>{{item.Modelo.Nome}}</td>
+                <td>
+                    <img ng-if="item.Imagem.length" ng-src="data:image/jpeg;base64,{{item.Imagem}}" 
+                         style="height: 75px; width: auto;"/>
+                    <span ng-if="!item.Imagem.length">-</span>
+                </td>
+                <td><a class="btn btn-primary btn-xs" href="#/EditarCarro/{{item.ID}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" href="#/DeletarCarro/{{item.ID}}"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
